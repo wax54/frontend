@@ -11,19 +11,18 @@ function App() {
   const [user, setUser] = useLocalStorageState("userData", {});
   const [token, setToken] = useLocalStorageState("authToken", "");
 
-  const updateCurrentUser = async () => {
-    try {
-      const userData = await JoblyApi.getUserData()
-      setUser(userData);
-    } catch {
-      setUser({});
-    }
-  }
-
   useEffect(() =>{
+    const updateCurrentUser = async () => {
+      try {
+        const userData = await JoblyApi.getUserData()
+        setUser(userData);
+      } catch {
+        setUser({});
+      }
+    }
     JoblyApi.token = token;
     updateCurrentUser()
-  }, [token])
+  }, [token, setUser])
 
 
   const registerUser = async (userData) => {
@@ -67,8 +66,8 @@ function App() {
   const applyToJob = async (jobId) => {
     try {
       const success = await JoblyApi.applyToJob(jobId);
-      if(success) {
-        updateCurrentUser();
+      if (success) {
+        setUser(user => ({ ...user, applications: [ ...user.applications, jobId ] }) );
         return true;
       } else {
         return false;

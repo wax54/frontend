@@ -33,7 +33,7 @@ class JoblyApi {
         console.error("API Error:", err.response);
         let message = err.response.data.error.message;    
         throw Array.isArray(message) ? message : [message];
-      } else throw ["DB CONNECTION ERROR"];
+      } else throw Error(["DB CONNECTION ERROR"]);
     }
   }
 
@@ -43,7 +43,7 @@ class JoblyApi {
   static async applyToJob(jobId) {
     const user = jwt.decode(JoblyApi.token);
     let res = await this.request(`users/${user.username}/jobs/${jobId}`, {}, 'post');
-    return (res.applied == jobId);
+    return (+res.applied === jobId);
   }
 
   /** gets data on the current user*/
