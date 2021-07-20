@@ -20,8 +20,6 @@ function App() {
     }
   }
 
-  console.log('hello' ,user)
-
   useEffect(() =>{
     JoblyApi.token = token;
     updateCurrentUser()
