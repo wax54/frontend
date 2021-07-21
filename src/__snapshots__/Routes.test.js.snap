@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matchesSnapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Home"
+  >
+    <h1>
+      Please Login or Signup above!
+    </h1>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`matchesSnapshot with valid user 1`] = `
+<DocumentFragment>
+  <div
+    class="Home"
+  >
+    <h1>
+      Hello and Welcome wax54!
+    </h1>
+  </div>
+</DocumentFragment>
+`;

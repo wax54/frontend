@@ -14,7 +14,6 @@ const useLocalStorageState = (storageName, init) => {
     }
 
     useEffect(() => {
-        console.log('hello');
         localStorage[storageName] = JSON.stringify(state);
     }, [ state, storageName ]);
 

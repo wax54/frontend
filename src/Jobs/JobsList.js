@@ -5,7 +5,9 @@ import JobCard from "./JobCard";
 const JobsList = ({ jobs, search }) => (
     <div className="JobsList">
         {search ? <Search  search={search} /> : null }
-        {jobs.map(job => <JobCard key={job.id} job={job} />)}
+        {jobs.length 
+            ? jobs.map(job => <JobCard key={job.id} job={job} />)
+            : <p>No Jobs Found!</p>}
     </div> 
 );
 export default JobsList

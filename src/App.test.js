@@ -1,13 +1,11 @@
-import { render, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
+import { renderAndWaitFor} from './testHelpers';
 import App from './App';
 
 test("doesn't blow up", async () => {
-    await waitFor(() => {
-        render(
-            <MemoryRouter>
-                <App />
-            </MemoryRouter>
-        );
-    });
+    await renderAndWaitFor(App);
+});
+
+test("matchesSnapshot", async () => {
+    const { asFragment } = await renderAndWaitFor(App);
+    expect(asFragment()).toMatchSnapshot();
 });

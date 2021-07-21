@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matchesSnapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="NavBar"
+  >
+    <a
+      aria-current="page"
+      class="active"
+      href="/"
+    >
+      Home
+    </a>
+    <a
+      href="/login"
+    >
+       login
+    </a>
+    <a
+      href="/signup"
+    >
+      Signup
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`matchesSnapshot with valid user 1`] = `
+<DocumentFragment>
+  <div
+    class="NavBar"
+  >
+    <a
+      aria-current="page"
+      class="active"
+      href="/"
+    >
+      Home
+    </a>
+    <a
+      href="/companies"
+    >
+      companies
+    </a>
+    <a
+      href="/jobs"
+    >
+      jobs
+    </a>
+    <a
+      href="/profile"
+    >
+      Hello, wax54!
+    </a>
+    <a
+      href="/"
+    >
+      logout
+    </a>
+  </div>
+</DocumentFragment>
+`;

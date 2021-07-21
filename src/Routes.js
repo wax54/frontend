@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "./Home";
 import Profile from "./User/Profile";
-import CompanyList from "./Companies/CompanyList";
+import AllCompanies from "./Companies/AllCompanies";
 import CompanyDetail from "./Companies/CompanyDetail";
 import AllJobs from "./Jobs/AllJobs";
 import Login from "./Forms/Login";
@@ -21,7 +21,6 @@ const ProtectedRoute = (props) => {
     } else {
         return <Redirect to={props.redirect || "/"} />
     }
-    
 }
 
 const Routes = () => {
@@ -45,7 +44,7 @@ const Routes = () => {
             </ProtectedRoute>
 
             <ProtectedRoute exact path="/companies" redirect="/" authentication={isLoggedIn}>
-                <CompanyList />
+                <AllCompanies />
             </ProtectedRoute>
 
             <ProtectedRoute exact path="/companies/:handle" redirect="/" authentication={isLoggedIn}>
