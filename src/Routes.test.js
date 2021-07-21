@@ -25,25 +25,25 @@ test("can navigate to different routes", () => {
 
 });
 
-test("can access protected Routes when logged in", async () => {
-    const { queryByText } = await renderWithUserContextAndWait(
+test("can access protected Routes when logged in", () => {
+    const { queryByText } = renderWithUserContext(
         Routes, { 
             context: validUserContext, 
             initialEntries: ['/companies'] 
         });
-    expect(queryByText('No Companies Found!')).toBeInTheDocument();
+    expect(queryByText('Loading Companies...')).toBeInTheDocument();
 });
 
-test("can't access protected Routes when not logged in", async () => {
-    const { queryByText} = await renderWithUserContextAndWait(
+test("can't access protected Routes when not logged in", () => {
+    const { queryByText} = renderWithUserContext(
         Routes, 
         {initialEntries: ['/companies'] }
     );
-    expect(queryByText('No Companies Found!')).not.toBeInTheDocument();
+    expect(queryByText('Loading Companies...')).not.toBeInTheDocument();
 });
 
 test("protected Route companies redirects to Home when not logged in", async () => {
-    const { queryByText, } = await renderWithUserContextAndWait(
+    const { queryByText } = await renderWithUserContextAndWait(
         Routes,
         { initialEntries: ['/companies'] }
     );

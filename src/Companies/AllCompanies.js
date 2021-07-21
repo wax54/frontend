@@ -9,7 +9,7 @@ const AllCompanies = () => {
     useEffect(() => {
         async function getAllCompanies() {
             try {
-                const companies = await joblyApi.getCompanies(query);
+                const companies = await JoblyApi.getCompanies(query);
                 setCompanies(companies);
             } catch (e) {
                 setCompanies([]);
