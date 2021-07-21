@@ -6,16 +6,15 @@ const useLocalStorageState = (storageName, init) => {
     function getState() {
         try {
             const storedState = localStorage[storageName];
-            return  JSON.parse(storedState || init);
+            return storedState ? JSON.parse(storedState) : init;
         } catch (e) {
             console.error(e);
             return init
         }
     }
 
-
-
     useEffect(() => {
+        console.log('hello');
         localStorage[storageName] = JSON.stringify(state);
     }, [ state, storageName ]);
 
