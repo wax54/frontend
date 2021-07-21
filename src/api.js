@@ -33,7 +33,7 @@ class JoblyApi {
         console.error("API Error:", err.response);
         let message = err.response.data.error.message;    
         throw Array.isArray(message) ? message : [message];
-      } else throw Error(["DB CONNECTION ERROR"]);
+      } else throw ["DB CONNECTION ERROR"];
     }
   }
 
