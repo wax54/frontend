@@ -2,7 +2,10 @@ import { fireEvent, waitFor } from '@testing-library/react';
 import { renderWithUserContext } from '../testHelpers';
 import Signup from './Signup';
 
+//the history object we will be seeing if called
 const mockHistory = { push: jest.fn() };
+//setting up a mock of the react-router-dom, where almost 
+//everything is the same except useHistory returns our mocked history instead
 jest.mock('react-router-dom', () => (
     {
         ...jest.requireActual('react-router-dom'),
