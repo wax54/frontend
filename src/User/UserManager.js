@@ -1,24 +1,25 @@
 import UserContext from '../UserContext';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useLocalStorageState } from '../Hooks';
 import JoblyApi from '../api';
 
 function UserManager(props) {
     const [user, setUser] = useLocalStorageState("userData", {});
     const [token, setToken] = useLocalStorageState("authToken", "");
+    const updateCurrentUser = useCallback(async () => {
+        try {
+            const userData = await JoblyApi.getUserData();
+            console.log(userData);
+            setUser(userData);
+        } catch {
+            setUser({});
+        }
+    }, [setUser]);
 
     useEffect(() => {
-        const updateCurrentUser = async () => {
-            try {
-                const userData = await JoblyApi.getUserData()
-                setUser(userData);
-            } catch {
-                setUser({});
-            }
-        }
         JoblyApi.token = token;
         updateCurrentUser()
-    }, [token, setUser])
+    }, [token, updateCurrentUser])
 
 
     const registerUser = async (userData) => {
@@ -50,8 +51,8 @@ function UserManager(props) {
         if (!verified)
             return { status: false, errors: ["Password Not Valid"] };
         try {
-            const user = await JoblyApi.updateUser({ ...userData, passwordVerification: undefined });
-            setUser(user);
+            await JoblyApi.updateUser({ ...userData, passwordVerification: undefined });
+            updateCurrentUser();
             return { status: true };
 
         } catch (e) {
