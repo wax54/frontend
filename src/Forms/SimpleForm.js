@@ -6,11 +6,11 @@ const SimpleForm = ( {className, INITIAL_STATE, onSubmit, submitText="Submit", e
     const [formData, setFormData] = useState(INITIAL_STATE);
     const handleChange = evt => setFormData(data => {
         return {...data, [evt.target.name] : evt.target.value}
-    })
+    });
     const handleSubmit = evt => {
         evt.preventDefault(); 
         onSubmit(formData);
-    }
+    };
     return (
         <form className={className} onSubmit={handleSubmit}>
             {errors.map(message => 

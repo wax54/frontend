@@ -1,16 +1,15 @@
 import './Signup.css';
 
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import UserContext from "../UserContext";
 import SimpleForm from "./SimpleForm";
 
 const SignupForm  = () => {
     const [ errors, setErrors ] = useState([]);
     const history = useHistory();
-
+    
     const { registerUser } = useContext(UserContext);
-
     const signupInputs = {
         username : "",
         password : "", 
@@ -20,7 +19,10 @@ const SignupForm  = () => {
     }
 
     const signup = async userData => {
+
+        
         const res = await registerUser(userData);
+
         if (res.status) {
             history.push('/');
         } else {

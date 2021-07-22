@@ -75,4 +75,8 @@ async function renderWithUserContextAndWait(Component, options) {
 
 
 
-export { validUserContext, renderWithRouter, renderAndWaitFor, renderWithUserContext, renderWithUserContextAndWait }
+export { validUserContext, 
+    renderWithRouter, 
+    renderAndWaitFor, 
+    renderWithUserContext, 
+    renderWithUserContextAndWait }
